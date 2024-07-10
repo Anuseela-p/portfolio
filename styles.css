@@ -1,0 +1,98 @@
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh; /* Make the container take the full height of the viewport */
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  text-align: center;
+}
+
+.slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top */
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+}
+
+.slide img {
+  width: 100%;
+  vertical-align: middle;
+  transition: transform 0.3s ease; /* Add transition for smooth zooming */
+}
+
+/* Buttons for manual navigation */
+.prev, .next, .zoom-in, .zoom-out {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+  z-index: 1; /* Ensure buttons are above slides */
+}
+
+.prev:hover, .next:hover, .zoom-in:hover, .zoom-out:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.zoom-in, .zoom-out {
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.zoom-in {
+  margin-left: 30px;
+}
+
+.zoom-out {
+  margin-right: 30px;
+}
+
+@media (max-width: 768px) {
+  .prev, .next {
+      display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .zoom-in, .zoom-out {
+    display: none;
+  }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .slide img {
+      /* Adjust image size for mobile screens */
+      max-width: 100%;
+      height: auto;
+  }
+}
+
+@media (min-width: 769px) {
+  .slide img {
+      /* Adjust image size for larger screens */
+      max-width: 35%;
+      height: auto;
+  }
+}
